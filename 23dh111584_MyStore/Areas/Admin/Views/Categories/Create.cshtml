@@ -1,0 +1,23 @@
+﻿@model _23dh111584_MyStore.Models.Category
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Thêm danh mục</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Category</h4>
+        <hr />PVCreateEditCategory
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+       @* Nhúng Partial View vào form cha*@
+        @Html.Partial("PVCreateEditCategory", Model)
+    </div>
+}
+

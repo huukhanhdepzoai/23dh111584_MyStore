@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,48 +8,43 @@ using System.Web;
 using System.Web.Mvc;
 using _23dh111584_MyStore.Models;
 
-namespace _23dh111584_MyStore.Controllers
+namespace _23dh111584_MyStore.Areas.Admin.Controllers
 {
     public class CategoriesController : Controller
     {
         private My_StoreEntities db = new My_StoreEntities();
 
-        // GET: Categories
-        // GET lấy dữ liệu từ bảng Category trong DB để hiển thị lên
+        // GET: Admin/Categories
         public ActionResult Index()
         {
             return View(db.Category.ToList());
         }
 
-        // GET: Categories/Details/5
-        // Details: lấy chi tiết một bản ghi có CategoryID = id
+        // GET: Admin/Categories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest); // mã lỗi 400: thiếu giá trị truyền vào
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Category category = db.Category.Find(id);
-            if (category == null) // không tìm thấy bản ghi
+            if (category == null)
             {
-                return HttpNotFound(); // mã lỗi 404
+                return HttpNotFound();
             }
             return View(category);
         }
 
         // GET: Admin/Categories/Create
-        // Load form Create
-        // [HttpGet] là phương thức mặc định, nên không cần khai báo từ khóa
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Categories/Create/Create
-        // POST: lưu dữ liệu nhập vào từ forrm Create vào DB
+        // POST: Admin/Categories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CategoryID,CategoryName")] Category category)
         {
@@ -63,7 +58,7 @@ namespace _23dh111584_MyStore.Controllers
             return View(category);
         }
 
-        // GET: Categories/Edit/5
+        // GET: Admin/Categories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,7 +73,7 @@ namespace _23dh111584_MyStore.Controllers
             return View(category);
         }
 
-        // POST: Categories/Edit/5
+        // POST: Admin/Categories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -94,7 +89,7 @@ namespace _23dh111584_MyStore.Controllers
             return View(category);
         }
 
-        // GET: Categories/Delete/5
+        // GET: Admin/Categories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +104,7 @@ namespace _23dh111584_MyStore.Controllers
             return View(category);
         }
 
-        // POST: Categories/Delete/5
+        // POST: Admin/Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
