@@ -13,10 +13,5 @@ namespace _23dh111584_MyStore.Areas.Admin.Controllers
         {
             return View();
         }
-        public ActionResult _ViewStar()
-        {
-            return View();
-        }
-
     }
 }

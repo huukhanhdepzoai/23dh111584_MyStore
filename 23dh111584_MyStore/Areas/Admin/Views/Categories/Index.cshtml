@@ -5,29 +5,26 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Danh sách danh mục sản phẩm</h2>
+<h2 class="bg-black-success"Danh sách danh mục sản phẩm</h2>
 
-<p>
-    @Html.ActionLink("Thêm mới", "Create",null, new {@class = "btn btn-primary"})
-</p>
-<table class="table bg-info col-lg-8 col-md-6 col-lg-sm3">
+<table class="table bg-info col-lg-12 col-md-6 ">
     <tr>
-        <th class="bg-success col-lg-5">
+        <th class="bg-success">
             @*Html.DisplayNameFor(model => model.CategoryName)*@
             TÊN DANH MỤC
         </th>
-        <th> class="bg-success col-lg-3"</th>
+        <th class="bg-success"></th>
     </tr>
 
-@foreach (var item in Model) 
-{
+@foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.CategoryName)
         </td>
         <td>
-            @Html.ActionLink("Cập nhật", "Edit", new { id = item.CategoryID },new { @class = "btn btn-primary btn-sm" })
-            @Html.ActionLink("Xóa", "Delete", new { id = item.CategoryID },new { @class = "btn btn-primary btn-sm" })
+            @Html.ActionLink("sửa ", "Edit", new { id = item.CategoryID }, new { @class = "btn btn-primary btn-sm" })
+            @Html.ActionLink("xóa", "Details", new { id = item.CategoryID }, new { @class = "btn btn-primary btn-sm" })
+          
         </td>
     </tr>
 }
