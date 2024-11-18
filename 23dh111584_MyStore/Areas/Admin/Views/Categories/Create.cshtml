@@ -8,7 +8,7 @@
 <h2>Thêm danh mục</h2>
 
 @using (Html.BeginForm()) 
-{
+ {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
@@ -19,5 +19,5 @@
        @* Nhúng Partial View vào form cha*@
         @Html.Partial("PVCreateEditCategory", Model)
     </div>
-}
+ }
 
